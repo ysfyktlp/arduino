@@ -12,7 +12,7 @@ void setup() {
  
 void loop() {
  
-  int sensor_durumu = digitalRead(ses_sensoru);
+  int sensor_durumu = analogRead(ses_sensoru);
  
   if (sensor_durumu == 0)
   {
