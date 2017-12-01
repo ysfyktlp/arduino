@@ -1,5 +1,5 @@
 #include <SPI.h>
-#include <MFRC522.h>
+#include <MFRC522.h>//RFID kütüphanesini kurmayı unutmayın...
 
 MFRC522 lrt(10,9);
 MFRC522::MIFARE_Key key;
