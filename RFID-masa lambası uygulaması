@@ -1,0 +1,65 @@
+#include <SPI.h>
+#include <MFRC522.h>
+
+MFRC522 lrt(10,9);
+MFRC522::MIFARE_Key key;
+
+byte readCard[4];
+int successRead;
+byte kart[4]={70,122,208,161};//bu bölümde bulunan sayılar bana ait olan RFID karta aittir. öncelikle sizin bu kısma kendi kartınızı tanıtmanız gerektiğini unutmayın
+boolean izin=true;
+boolean isik_durumu = false;
+int role=3;
+
+
+void setup() {
+      Serial.begin(9600);
+      SPI.begin();  
+      lrt.PCD_Init();
+      pinMode(k_led,OUTPUT);
+      pinMode(y_led,OUTPUT);
+       do {
+    //okuma başarılı olana kadar getID fonksiyonunu çağır
+    successRead = getID(); 
+  }
+  while (!successRead);
+}
+
+void loop() {
+}
+int getID() {
+  //yeni bir kart okunmadıysa 0 döndür
+  if ( ! lrt.PICC_IsNewCardPresent()) { 
+    return 0;
+  }
+  if ( ! lrt.PICC_ReadCardSerial()) {
+    return 0;
+  }
+  izin=true;
+  Serial.print("Kart UID'si: ");
+  //kartın UID'sini byte byte oku ve seri monitöre yaz
+  for (int i = 0; i < lrt.uid.size; i++) {  //
+    readCard[i] = lrt.uid.uidByte[i];
+   
+      if(lrt.uid.uidByte[i] != kart[i]){
+        izin=false;
+        }
+  }
+  if(izin == true)
+  {
+    if (!isik_durumu)
+        {
+          isik_durumu = true;
+          digitalWrite(role, HIGH);
+        }
+        else if (isik_durumu)
+        {
+          isik_durumu = false;
+          digitalWrite(role, LOW);
+        }
+  }
+  Serial.println("");
+  //kart okumayı durdur ve 1 döndür (okuma başarılı)
+  lrt.PICC_HaltA();
+  return 0;
+}
