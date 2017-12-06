@@ -1,0 +1,20 @@
+int led =3;
+int hrkt=4;
+int sonuc;
+
+void setup() {
+  pinMode(led,OUTPUT);
+  Serial.begin(9600);
+}
+
+void loop() {
+  sonuc=digitalRead(hrkt);
+
+  if(sonuc==1){
+    digitalWrite(led,HIGH);
+    
+    }else{
+      digitalWrite(led,LOW);
+      }
+  Serial.println(sonuc);
+}
