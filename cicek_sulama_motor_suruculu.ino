@@ -2,7 +2,6 @@ const int in1=3;
 const int in2=4;
 
 int sensor = A0;
-int motor = 5 ;
 int veri;
 
 
