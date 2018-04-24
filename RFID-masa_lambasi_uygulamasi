@@ -1,8 +1,7 @@
 #include <SPI.h>
 #include <MFRC522.h>//RFID kütüphanesini kurmayı unutmayın...
 
-int k_led=3; // bu bölümdeki pin numaraları sizin ledlerinizi bağladığınız pin numaralarıyla değiştirin.
-int y_led=4; // bu bölümdeki pin numaraları sizin ledlerinizi bağladığınız pin numaralarıyla değiştirin.
+int role  = 3; // bu bölümdeki pin numaraları sizin rölerinizi bağladığınız pin numaralarıyla değiştirin.
 
 MFRC522 lrt(10,9);
 MFRC522::MIFARE_Key key;
@@ -23,8 +22,7 @@ void setup() {
       Serial.begin(9600);
       SPI.begin();  
       lrt.PCD_Init();
-      pinMode(k_led,OUTPUT);
-      pinMode(y_led,OUTPUT);
+      pinMode(role,OUTPUT);
        do {
     //okuma başarılı olana kadar getID fonksiyonunu çağır
     successRead = getID(); 
