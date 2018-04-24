@@ -1,8 +1,6 @@
 #include <SPI.h>
 #include <MFRC522.h>//RFID kütüphanesini kurmayı unutmayın...
 
-int role  = 3; // bu bölümdeki pin numaraları sizin rölerinizi bağladığınız pin numaralarıyla değiştirin.
-
 MFRC522 lrt(10,9);
 MFRC522::MIFARE_Key key;
 
@@ -15,7 +13,7 @@ byte kart[4]={70,122,208,161};/*bu bölümde bulunan sayılar bana ait olan RFID
                                     numaralarla değiştirin ve kodları tekrar yükleyin. Devreniz sorunsuz bir şekilde çalışacaktır. */
 boolean izin=true;
 boolean isik_durumu = false;
-int role=3;
+int role=3; // bu bölümdeki pin numaraları sizin rölerinizi bağladığınız pin numaralarıyla değiştirin.
 
 
 void setup() {
