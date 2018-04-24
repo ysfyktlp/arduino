@@ -1,12 +1,19 @@
 #include <SPI.h>
 #include <MFRC522.h>//RFID kütüphanesini kurmayı unutmayın...
 
+int k_led=3; // bu bölümdeki pin numaraları sizin ledlerinizi bağladığınız pin numaralarıyla değiştirin.
+int y_led=4; // bu bölümdeki pin numaraları sizin ledlerinizi bağladığınız pin numaralarıyla değiştirin.
+
 MFRC522 lrt(10,9);
 MFRC522::MIFARE_Key key;
 
 byte readCard[4];
 int successRead;
-byte kart[4]={70,122,208,161};//bu bölümde bulunan sayılar bana ait olan RFID karta aittir. öncelikle sizin bu kısma kendi kartınızı tanıtmanız gerektiğini unutmayın
+byte kart[4]={70,122,208,161};/*bu bölümde bulunan sayılar bana ait olan RFID karta aittir.
+                                    öncelikle sizin bu kısma kendi kartınızı tanıtmanız gerektiğini unutmayın
+                                    bunu yapmak içinde kodları arduino yükledikten sonra Serial monitörü çalıştırın
+                                    kullanmak istediğiniz kartı okutun. Ekrana gelen kartınıza ait numarayı bu bölümde yazan
+                                    numaralarla değiştirin ve kodları tekrar yükleyin. Devreniz sorunsuz bir şekilde çalışacaktır. */
 boolean izin=true;
 boolean isik_durumu = false;
 int role=3;
