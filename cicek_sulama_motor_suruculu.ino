@@ -9,8 +9,6 @@ void setup() {
   pinMode(in1,OUTPUT);
   pinMode(in2,OUTPUT);
   pinMode(sensor,INPUT);
-  pinMode(in1,OUTPUT);
-  pinMode(in2,OUTPUT);
   Serial.begin(9600);
 }
 
