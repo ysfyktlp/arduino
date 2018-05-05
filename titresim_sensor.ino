@@ -1,12 +1,10 @@
 int veri;
-
 int led=4;
 
 void setup() {
   Serial.begin(9600);
   pinMode(veri,INPUT);
   pinMode(led,OUTPUT);
-
 }
 
 void loop() {
@@ -19,5 +17,4 @@ void loop() {
     }else{
       digitalWrite(led,LOW);
       }
-
 }
