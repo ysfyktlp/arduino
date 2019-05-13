@@ -1,5 +1,5 @@
-int ses_sensoru = A0;
-int led = 4;
+int ses_sensoru = 4;
+int role = 5;
 int alkis = 0;
 long algilama_araligi_baslangic = 0;
 long algilama_araligi = 0;
@@ -7,12 +7,12 @@ boolean isik_durumu = false;
  
 void setup() {
   pinMode(ses_sensoru, INPUT);
-  pinMode(led,OUTPUT);
+  pinMode(role, OUTPUT);
 }
  
 void loop() {
  
-  int sensor_durumu = analogRead(ses_sensoru);
+  int sensor_durumu = digitalRead(ses_sensoru);
  
   if (sensor_durumu == 0)
   {
@@ -35,12 +35,12 @@ void loop() {
       if (!isik_durumu)
         {
           isik_durumu = true;
-          digitalWrite(led, HIGH);
+          digitalWrite(role, HIGH);
         }
         else if (isik_durumu)
         {
           isik_durumu = false;
-          digitalWrite(led, LOW);
+          digitalWrite(role, LOW);
         }
     }
     alkis = 0;
